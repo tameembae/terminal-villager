@@ -33,7 +33,8 @@ mkdir -p "$DESTINATION"
 
 case "$SHELL" in
 */bash)
-  echo "Bash is not supported yet"
+  echo "Appended to bashrc"
+  cat ./script.bash>>~/.bashrc
   ;;
 */zsh)
   echo "Zsh is not supported yet"
