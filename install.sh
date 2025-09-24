@@ -22,14 +22,11 @@ URLS=(
   'https://minecraft.wiki/images/Villager_trade3.ogg?f16ca&format=original'
 )
 
-for url in "${URLS[@]}"; do
-  echo "Downloading $url ..."
-  # Extract the base filename from the URL (remove query parameters)
-  filename=$(basename "${url%%\?*}")
-  curl -L -H "Accept: audio/ogg" -H "Content-Type: audio/ogg" -o "$DESTINATION/$filename" "$url"
-done
 
 mkdir -p "$DESTINATION"
+
+echo "Downloading audio from minecraft.wiki"
+curl --progress-bar --skip-existing --location -H "Accept: audio/ogg" -H "Content-Type: audio/ogg" --output-dir "$DESTINATION" --remote-name-all -- ${URLS[@]}
 
 case "$SHELL" in
 */bash)
