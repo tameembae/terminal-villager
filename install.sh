@@ -22,22 +22,21 @@ URLS=(
   'https://minecraft.wiki/images/Villager_trade3.ogg?f16ca&format=original'
 )
 
-
 mkdir -p "$DESTINATION"
 
 echo "Downloading audio from minecraft.wiki"
-curl --progress-bar --skip-existing --location -H "Accept: audio/ogg" -H "Content-Type: audio/ogg" --output-dir "$DESTINATION" --remote-name-all -- ${URLS[@]}
+curl --progress-bar -C - --location -H "Accept: audio/ogg" -H "Content-Type: audio/ogg" --output-dir "$DESTINATION" --remote-name-all -- "${URLS[@]}"
 
 case "$SHELL" in
 */bash)
-  echo "Appended to bashrc"
-  cat ./script.bash>>~/.bashrc
+  echo 'Appended to ~/.bashrc'
+  cat ./script.bash >>~/.bashrc
   ;;
 */zsh)
   echo "Zsh is not supported yet"
   ;;
 */fish)
-  echo "This is Fish"
+  echo 'Appended to ~/.config/fish/config.fish'
   cat ./script.fish >>~/.config/fish/config.fish
   ;;
 *)
