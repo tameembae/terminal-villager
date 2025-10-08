@@ -36,8 +36,8 @@ case "$SHELL" in
   echo "Zsh is not supported yet"
   ;;
 */fish)
-  echo 'Appended to ~/.config/fish/config.fish'
-  cat ./script.fish >>~/.config/fish/config.fish
+  echo 'Appended to ~/.config/fish/conf.d/terminal-villager.fish'
+  cat ./script.fish >~/.config/fish/conf.d/terminal-villager.fish
   ;;
 *)
   echo "Unknown shell: $SHELL"
